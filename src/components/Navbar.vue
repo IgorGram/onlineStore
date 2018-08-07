@@ -50,7 +50,7 @@
                     {title: 'Login', icon: 'account_box', url: '/login'},
                     {title: 'Register', icon: 'face', url: '/register'},
                     {title: 'Cart', icon: 'shopping_cart', url: '/checkout'},
-                    {title: 'New Product', icon: 'add', url: '/new'},
+                    {title: 'New Products', icon: 'add', url: '/new'},
                     {title: 'My Products', icon: 'list', url: '/list'},
                 ]
             }
