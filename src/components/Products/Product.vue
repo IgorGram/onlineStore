@@ -45,7 +45,6 @@
 		name: "Product",
         computed: {
 			product(){
-				console.log(this.id)
 				return this.$store.getters.productById(this.id)
             }
         }
@@ -63,7 +62,7 @@
     }
     .product_img {
         height: 100%;
-        width: 550px;
+        width: 100%;
     }
     .product_info {
         margin-left: 50px;

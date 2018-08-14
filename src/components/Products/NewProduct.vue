@@ -114,12 +114,10 @@
 		                description: this.description,
 		                promo: this.promo
                     }
-                    console.log(product)
                 }
             }
         },
         beforeMount(){
-			console.log(this.valid)
         }
 	}
 </script>
