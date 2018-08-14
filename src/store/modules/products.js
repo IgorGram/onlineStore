@@ -47,6 +47,11 @@ export default {
 		},
 		myProducts(state){
 			return state.products
+		},
+		productById(state){
+			return productId => {
+				return state.products.find(product => product.id === productId)
+			}
 		}
 	}
 }

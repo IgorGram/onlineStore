@@ -11,36 +11,37 @@ import Register from '@/components/Auth/Register'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-	  {
-	  	path: '',
-		name: 'home',
-		component: Home
-	  },{
-	  	path: '/product/:id',
-		name: 'product',
-		component: Product
-	  },{
-	  	path: '/list',
-		name: 'list',
-		component: ProductList
-	  },{
-	  	path: '/new',
-		name: 'new',
-		component: NewProduct
-	  },{
-	  	path: '/checkout',
-		name: 'checkout',
-		component: Checkout
-	  },{
-	  	path: '/login',
-		name: 'login',
-		component: Login
-	  },{
-	  	path: '/register',
-		name: 'register',
-		component: Register
-	  },
+	routes: [
+		{
+			path: '',
+			name: 'home',
+			component: Home
+		},{
+			path: '/product/:id',
+		    props: true,
+			name: 'product',
+			component: Product
+		},{
+			path: '/list',
+			name: 'list',
+			component: ProductList
+		},{
+			path: '/new',
+			name: 'new',
+			component: NewProduct
+		},{
+			path: '/checkout',
+			name: 'checkout',
+			component: Checkout
+		},{
+			path: '/login',
+			name: 'login',
+			component: Login
+		},{
+			path: '/register',
+			name: 'register',
+			component: Register
+		},
   ],
 	mode: 'history'
 })
