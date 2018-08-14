@@ -117,7 +117,10 @@
                     console.log(product)
                 }
             }
-      }
+        },
+        beforeMount(){
+			console.log(this.valid)
+        }
 	}
 </script>
 
