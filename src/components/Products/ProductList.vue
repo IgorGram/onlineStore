@@ -2,7 +2,7 @@
     <v-container>
         <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-                <h1 class="text--secondary mb3">My Products</h1>
+                <h1 class="text--secondary mb-3">My Products</h1>
                 <v-card
                         class="elevation-10 mb-2"
                         v-for="(product, i) in products"
