@@ -75,7 +75,8 @@
                     <v-flex xs12>
                         <v-spacer></v-spacer>
                         <v-btn
-                            :disabled='!valid'
+                            :loading="loading"
+                            :disabled='!valid || loading'
                             class="success"
                             @click="createProduct"
                         >
@@ -102,6 +103,11 @@
                 valid: false
 			}
 		},
+        computed: {
+	        loading(){
+		        return this.$store.getters.loading
+	        }
+        },
         methods: {
 	        createProduct() {
                 if (this.$refs.form.validate()){
@@ -113,11 +119,14 @@
 		                price: this.price,
 		                description: this.description,
 		                promo: this.promo
-                    }
+                    };
+                    this.$store.dispatch('createProduct', product)
+                            .then(() => {
+                            	this.$router.push('/list')
+                            })
+                            .catch(() => {})
                 }
             }
-        },
-        beforeMount(){
         }
 	}
 </script>
