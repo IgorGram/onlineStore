@@ -27,6 +27,11 @@ new Vue({
 			storageBucket: "onlinestore-fb9be.appspot.com",
 			messagingSenderId: "687593427379"
 		};
-		fb.initializeApp(config)
+		fb.initializeApp(config);
+		fb.auth().onAuthStateChanged(user => {
+			if(user) {
+				this.$store.dispatch('autoLoginUser', user)
+			}
+		})
 	}
 });
