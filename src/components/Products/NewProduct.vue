@@ -48,16 +48,23 @@
                 </v-form>
                 <v-layout class="mb-3">
                     <v-flex>
-                        <v-btn class="warning">
+                        <v-btn class="warning" @click="upload">
                             Upload
                             <v-icon right dark>cloud_upload</v-icon>
                         </v-btn>
+                        <input
+                            @change="onFileChange"
+                            ref="fileInput"
+                            type="file"
+                            style="display: none"
+                            accept="image/*"/>
                     </v-flex>
                 </v-layout>
                 <v-layout>
                     <v-flex xs12>
                        <img
-                            src=""
+                            v-if="imageSrc"
+                            :src="imageSrc"
                             height="200px"
                        >
                     </v-flex>
@@ -76,7 +83,7 @@
                         <v-spacer></v-spacer>
                         <v-btn
                             :loading="loading"
-                            :disabled='!valid || loading'
+                            :disabled='!valid || !image || loading'
                             class="success"
                             @click="createProduct"
                         >
@@ -100,7 +107,9 @@
                 price: 0,
                 description: '',
                 promo: false,
-                valid: false
+                valid: false,
+                image: null,
+                imageSrc: ''
 			}
 		},
         computed: {
@@ -109,8 +118,20 @@
 	        }
         },
         methods: {
+	        onFileChange(event){
+	        	const file = event.target.files[0];
+	        	const reader = new FileReader();
+	        	reader.onload = e => {
+	        		this.imageSrc = reader.result
+                }
+	        	reader.readAsDataURL(file);
+	        	this.image = file
+            },
+	        upload(){
+	        	this.$refs.fileInput.click()
+            },
 	        createProduct() {
-                if (this.$refs.form.validate()){
+                if (this.$refs.form.validate() && this.image){
                 	const product = {
 		                title: this.title,
 		                vendor: this.vendor,
@@ -118,7 +139,8 @@
 		                material: this.material,
 		                price: this.price,
 		                description: this.description,
-		                promo: this.promo
+		                promo: this.promo,
+		                image: this.image
                     };
                     this.$store.dispatch('createProduct', product)
                             .then(() => {

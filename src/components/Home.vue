@@ -73,7 +73,6 @@
                         color="purple"
                         indeterminate
                     ></v-progress-circular>
-
                 </v-flex>
             </v-layout>
         </v-container>
