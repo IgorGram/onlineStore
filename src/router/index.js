@@ -7,6 +7,7 @@ import ProductList from '@/components/Products/ProductList'
 import Checkout from '@/components/User/Checkout'
 import Login from '@/components/Auth/Login'
 import Register from '@/components/Auth/Register'
+import AuthGuard from './auth-guard'
 
 Vue.use(Router)
 
@@ -24,15 +25,18 @@ export default new Router({
 		},{
 			path: '/list',
 			name: 'list',
-			component: ProductList
+			component: ProductList,
+			beforeEnter: AuthGuard
 		},{
 			path: '/new',
 			name: 'new',
-			component: NewProduct
+			component: NewProduct,
+			beforeEnter: AuthGuard
 		},{
 			path: '/checkout',
 			name: 'checkout',
-			component: Checkout
+			component: Checkout,
+			beforeEnter: AuthGuard
 		},{
 			path: '/login',
 			name: 'login',
